@@ -1,0 +1,33 @@
+<div>
+<div>
+<div class="form-group col-lg-3">
+        <label for="usr">Username:</label>
+        <input type="text" class="form-control input-sm" placeholder:"Username" ng-model="$ctrl.username">
+	
+        <label>Password:</label>
+        <input type="password" class="form-control input-sm" placeholder:"Password" ng-model="$ctrl.password">
+        
+	<label>Email:</label>
+        <input type="text" class="form-control input-sm" placeholder:"Email" ng-model="$ctrl.email">
+	
+	<label>Team:</label>
+         <input class="form-control input-sm" dropdown-select="$ctrl.ddTeams"
+                dropdown-model="$ctrl.team"
+                dropdown-item-label="text">
+
+	
+
+	
+<button name="register" ng-click="$ctrl.register()" class="btn btn-default" type="button">Register</button>
+</div>
+</div>
+
+<div ng-show="$ctrl.error != ''" id="error">
+        <span> {{$ctrl.error}} </span>
+</div>
+<div ng-show="$ctrl.msg != ''" id="msg">
+        <span> {{$ctrl.msg}} </span>
+</div>
+	
+
+</div>

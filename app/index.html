@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Proiect intro</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="lib/angular-dropdowns/dist/angular-dropdowns.min.css">
+  <link href="lib/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="lib/bower_components/cal-heatmap/cal-heatmap.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#!">Home</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#!/users">Users</a></li>
+    </ul>
+  </div>
+</nav>
+ <div ng-view></div>
+  
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-dropdowns/dist/angular-dropdowns.js"></script>
+  <script src="lib/angular-ui-router/angular-ui-router.min.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="lib/moment/moment.js"></script>
+  <script src="lib/moment-business-days/index.js"></script>
+  <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+  <script src="app.module.js"></script>
+  <script src="app.config.js"></script>
+
+  <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
+  <script src="user-session/user-session.module.js"></script>
+  <script src="user-session/user-session.component.js"></script>
+  <script src="user-data/user-data.module.js"></script>
+  <script src="user-data/user-data.component.js"></script>
+  <script src="timeString/timeString.filter.js"></script>
+  <script src="users/users.module.js"></script>
+  <script src="register/register.module.js"></script>
+  <script src="register/register.component.js"></script>
+  <script src="login/login.module.js"></script>
+  <script src="login/login.component.js"></script>
+  <script src="users/users.component.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/1.0.0-beta.1/ng-google-chart.min.js" type="text/javascript"></script>
+  <script src="lib/angularjs-datepicker/src/js/angular-datepicker.js"></script> 
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

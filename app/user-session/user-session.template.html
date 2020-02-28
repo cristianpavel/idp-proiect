@@ -1,0 +1,95 @@
+<div>
+<div class="form-group col-lg-2">
+<button name="startSesion" ng-click="$ctrl.startSession()" class="btn btn-default" type="button">Start Session</button>
+<button name="endSession" ng-click="$ctrl.endSession()" class="btn btn-default" type="button">End Session</button>
+<br>
+	<br>
+	<br>
+</div>
+
+<div class="form-group col-lg-2" ng-if="$ctrl.is_admin">
+<div>
+	<label>Team Name</label>
+	<input type="text" class="form-control input-sm" placeholder:"Team Name" ng-model="$ctrl.newTeam">
+	<label>Team Manager<label>
+	 <input class="form-control input-sm" dropdown-select="$ctrl.ddUsers"
+                dropdown-model="$ctrl.newTeamManager"
+                dropdown-item-label="text" style="float: left">
+	 <label>Team Department<label>
+	 <input class="form-control input-sm" dropdown-select="$ctrl.ddDepts"
+                dropdown-model="$ctrl.newTeamDept"
+                dropdown-item-label="text" style="float: left">
+</div>
+<button name="addTeam" ng-click="$ctrl.addTeam()" class="btn btn-default" type="button">Add Team</button>
+</div>
+<div class="form-group col-lg-2" ng-if="$ctrl.is_admin">
+<div> 
+	<label>Department Name<label>
+        <input type="text" class="form-control input-sm" placeholder:"Department Name" ng-model="$ctrl.newDept">
+	<label>Department Manager<label>
+	 <input class="form-control input-sm" dropdown-select="$ctrl.ddUsers"
+                dropdown-model="$ctrl.newDeptManager"
+                dropdown-item-label="text" style="float: left">
+	<label>Department Holidays<label>
+	<input class="form-control input-sm" dropdown-select="$ctrl.ddDays"
+                dropdown-model="$ctrl.newDeptDays"
+                dropdown-item-label="text" style="float: left">
+</div>
+<button name="addDept" ng-click="$ctrl.addDept()" class="btn btn-default" type="button">Add Department</button>
+</div>
+
+<div id = "dashboard">
+<button name="logout" ng-click="$ctrl.logout()" class="btn btn-default" type="button">Logout</button>
+<h1>Username: {{$ctrl.username}}</h1>
+<h2 ng-class="{inactive: $ctrl.valid, active : !$ctrl.valid, inholiday: $ctrl.in_holiday}">{{$ctrl.in_holiday? 'IN HOLIDAY' : ($ctrl.valid ? 'INACTIVE' : 'ACTIVE')}}</h2> 
+
+<p id="session_history">
+<a href="#!/users/{{$ctrl.username}}">See Session History</a>
+</p>
+<h2>Team: {{$ctrl.team}}</h2>
+<h2>Department: {{$ctrl.dept}}</h2>
+</div>
+<div>
+<table class="table table-striped">
+        <thead>
+        <tr>
+                <th>No</th>
+                <th>Start (Inclusive)</th>
+                <th>End (Exclusive)</th>
+                <th>Duration (Business Days)</th>
+        </tr>
+        </thead>
+        <tbody>
+                <tr ng-repeat="holiday in $ctrl.holidays">
+                        <td>{{$index}}</td>
+                        <td>{{holiday.start | date :'dd/MM/yyyy'}}</td>
+                        <td>{{holiday.end | date :'dd/MM/yyyy'}}</td>
+                        <td>{{holiday.duration}}</td>
+                </tr>
+        </tbody>
+</table>
+</div>
+<div class="datepicker" id="from"> 
+<span>From</span> 
+<datepicker date-format="yyyy-MM-dd" date-min-limit="{{$ctrl.minDate}}"> 
+  <input ng-model="$ctrl.from" type="text" readonly/> 
+</datepicker> 
+</div> 
+<div class="datepicker" id="to">
+<span>To</span> 
+<datepicker date-format="yyyy-MM-dd" date-min-limit="{{$ctrl.previousFrom}}">
+  <input ng-model="$ctrl.to" type="text" readonly/> 
+</datepicker> 
+<button ng-click="$ctrl.addHoliday()" class="btn btn-default" type="button">Add Holiday</button>
+</div> 
+
+
+<div ng-show="$ctrl.error != ''" id="error">
+        <span> {{$ctrl.error}} </span>
+</div>
+<div ng-show="$ctrl.msg != ''" id="msg">
+        <span> {{$ctrl.msg}} </span>
+</div>
+
+
+</div>

@@ -1,0 +1,23 @@
+<div>
+
+<div class="form-group col-lg-4">
+        <label for="usr">Username:</label>
+        <input type="text" class="form-control input-sm" placeholder:"Username" ng-model="$ctrl.username">
+	
+        <label>Password:</label>
+        <input type="password" class="form-control input-sm" placeholder:"Password" ng-model="$ctrl.password">
+	
+	<button name="login" ng-click="$ctrl.login()" class="btn btn-default" type="button">Login</button>
+	<button name="register" ng-click="$ctrl.register()" class="btn btn-default" type="button">Register</button>
+</div>
+
+
+<div ng-show="$ctrl.error != ''" id="error">
+        <span> {{$ctrl.error}} </span>
+</div>
+<div ng-show="$ctrl.msg != ''" id="msg">
+        <span> {{$ctrl.msg}} </span>
+</div>
+	
+
+</div>
