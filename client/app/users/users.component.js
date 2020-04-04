@@ -15,7 +15,7 @@ angular.
 				var getFromServer = function getFromServer(postPath, postData) {
 					console.log(postPath);
 					console.log(postData);
-					$http.post(postPath, postData).then(function(response) {
+					$http.post('http://localhost:3000' + postPath, postData).then(function(response) {
 						console.log(response.data);
 						if (response.data.error) {
 							self.users = undefined;
@@ -115,7 +115,7 @@ angular.
 
 				self.getProductiveUsers = function () {
 					self.usersProductive = undefined;
-					$http.post('/users/productive', {
+					$http.post('http://localhost:3000/users/productive', {
 						noUsers: self.noUsersProductive
 					}).then(function(response) {
 						console.log('Got Most Productive');

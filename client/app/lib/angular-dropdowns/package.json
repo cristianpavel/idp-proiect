@@ -1,0 +1,93 @@
+{
+  "_from": "angular-dropdowns",
+  "_id": "angular-dropdowns@1.5.1",
+  "_inBundle": false,
+  "_integrity": "sha1-vKqgdmJwGQMb+ToHB/nXv/3lMgc=",
+  "_location": "/angular-dropdowns",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "angular-dropdowns",
+    "name": "angular-dropdowns",
+    "escapedName": "angular-dropdowns",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-dropdowns/-/angular-dropdowns-1.5.1.tgz",
+  "_shasum": "bcaaa076627019031bf93a0707f9d7bffde53207",
+  "_spec": "angular-dropdowns",
+  "_where": "/home/cristian/IDP/idp-proiect/client",
+  "author": {
+    "name": "James Seppi",
+    "email": "james.seppi@gmail.com",
+    "url": "http://www.github.com/jseppi"
+  },
+  "bugs": {
+    "url": "https://github.com/jseppi/angular-dropdowns/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "eddimonge"
+    },
+    {
+      "name": "JustMaier"
+    },
+    {
+      "name": "ramiroaraujo"
+    },
+    {
+      "name": "tlvince"
+    },
+    {
+      "name": "dinodsaurus"
+    },
+    {
+      "name": "elishacook"
+    },
+    {
+      "name": "alexisbg"
+    },
+    {
+      "name": "BDomzalski"
+    },
+    {
+      "name": "Chinokao"
+    }
+  ],
+  "dependencies": {},
+  "deprecated": false,
+  "description": "AngularJS Dropdown Directives",
+  "devDependencies": {
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-jshint": "^1.11.0",
+    "gulp-karma": "0.0.4",
+    "gulp-minify-css": "^1.1.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0",
+    "jshint-stylish": "^2.0.0"
+  },
+  "homepage": "https://github.com/jseppi/angular-dropdowns",
+  "keywords": [
+    "angular",
+    "dropdown",
+    "menu",
+    "select"
+  ],
+  "license": "MIT",
+  "main": "dist/angular-dropdowns.min.js",
+  "name": "angular-dropdowns",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jseppi/angular-dropdowns.git"
+  },
+  "version": "1.5.1"
+}

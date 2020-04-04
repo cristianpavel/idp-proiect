@@ -7,6 +7,7 @@ angular.
 		controller: ['$http', '$routeParams', 
 			function UserDataController($http, $routeParams) {
 				var self = this;
+
 				self.noSessionsTable = 10;
 				self.noSessionsGraph = 10;
 				self.average = 0;
@@ -27,7 +28,7 @@ angular.
 
 				var getSessionsFromServer = function getSessionsFromServer() {
 					
-					$http.post('/user-data/sessions', formPostData(self.noSessionsTable, self.pageNo)).then(function(response) {
+					$http.post('http://localhost:3000/user-data/sessions', formPostData(self.noSessionsTable, self.pageNo)).then(function(response) {
 						self.sessions = getSessionsFromResponse(response);
 					
 					});
@@ -60,7 +61,7 @@ angular.
 						return;
 					}
 
-					$http.post('/user-data/sessions', formPostData(self.noSessionsGraph, 1)).then(function(response) {
+					$http.post('http://localhost:3000/user-data/sessions', formPostData(self.noSessionsGraph, 1)).then(function(response) {
 						
 						var sessions = getSessionsFromResponse(response);
 
@@ -87,7 +88,7 @@ angular.
 					if (to < from)
 						return;
 					to.setDate(to.getDate() + 1);
-					$http.post('/user-data/date-histogram', 
+					$http.post('http://localhost:3000/user-data/date-histogram', 
 						{
 							username: self.userId,
 							to: to.getTime(),
@@ -265,7 +266,7 @@ angular.
 
 				}
 				
-				$http.post('/user-data/average', formPostData(0, 0)).then(function(response) {
+				$http.post('http://localhost:3000/user-data/average', formPostData(0, 0)).then(function(response) {
 
 					console.log(response.data);
 					self.average = response.data.avg;

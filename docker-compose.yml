@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+        db:
+                image: mongo
+                restart: always
+                environment:
+                        MONGO_INITDB_DATABASE: 'db'
+                        MONGO_INITDB_USERNAME: 'admin'
+                        MONGO_INITDB_PASSWORD: 'admin123'
+                volumes:
+                        - db:/data/db
+        login:
+                restart: always
+                build: ./services/login
+                ports:
+                        - '8080:8080'
+        client:
+                restart: always
+                build: ./client
+                ports:
+                        - '8000:8000'
+volumes:
+  db:

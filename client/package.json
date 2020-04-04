@@ -7,8 +7,10 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.7.5",
+    "angular-dropdowns": "^1.5.1",
     "angular-loader": "^1.7.5",
     "angular-route": "^1.7.5",
+    "angular-ui-router": "^1.0.25",
     "html5-boilerplate": "0.0.1"
   },
   "devDependencies": {

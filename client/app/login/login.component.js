@@ -8,6 +8,8 @@ angular.
 			function LoginController($http, $timeout, $window) {
 
 				var self = this;
+				var server = window.config.login_service;
+				console.log(window.config);
 				var badUsername = function badUsername() {
 					return !self.username;
 				}
@@ -15,7 +17,8 @@ angular.
 
 				self.msg = "";
 				var sendDataToServer = function sendDataToServer(data) {
-					return $http.post("http://localhost:3000/login", data)
+					return $http.post(server.host + ":" +
+						server.port + "/login", data)
 						.catch(function(err) {
 							console.log(err);
 							return false;
@@ -56,6 +59,12 @@ angular.
 						if (response.data &&
 							response.data.error) {
 							self.error = response.data.error; 
+							clear('error');
+							return false;
+						
+						}
+						if (response.data === undefined) {
+							self.error = 'Error';
 							clear('error');
 							return false;
 						}

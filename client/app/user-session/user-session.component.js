@@ -15,7 +15,7 @@ angular.
 				
 				
 				var sendDataToServer = function sendDataToServer(path, data) {
-					return $http.post('/account' + path, data, {headers: 
+					return $http.post('http://localhost:3000/account' + path, data, {headers: 
 						{'x-access-token' : self.token}})
 						.catch(function(err) {
 							console.log(err);

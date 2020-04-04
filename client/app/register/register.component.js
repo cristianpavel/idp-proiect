@@ -8,6 +8,7 @@ angular.
 			function RegisterController($http, $timeout, $window) {
 
 				var self = this;
+				var server = $window.config;
 				var badUsername = function badUsername() {
 					return !self.username;
 				}
@@ -19,7 +20,8 @@ angular.
 
 				self.msg = "";
 				var sendDataToServer = function sendDataToServer(path, data) {
-					return $http.post(path, data)
+					return $http.post(serve.host + ":" 
+						+ server.port + path, data)
 						.catch(function(err) {
 							console.log(err);
 							return false;
@@ -77,7 +79,7 @@ angular.
 				}
 
 				self.init = function init() {
-					sendDataToServer('http://localhost:3000/account/getTeams', {})
+					sendDataToServer('/account/getTeams', {})
 						.then((response) => {
 					  		if (response.data &&
                                                                 response.data.error) {
