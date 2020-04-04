@@ -2,7 +2,6 @@ version: '3.3'
 services:
         db:
                 image: mongo
-                restart: always
                 environment:
                         MONGO_INITDB_DATABASE: 'db'
                         MONGO_INITDB_USERNAME: 'admin'
@@ -10,10 +9,8 @@ services:
                 volumes:
                         - db:/data/db
         login:
-                restart: always
                 image: cristianpavel/idp:login
         client:
-                restart: always
                 image: cristianpavel/idp:client
                 ports:
                         - '8000:8000'

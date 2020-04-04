@@ -21,6 +21,6 @@ connection.init(function (err, client) {
 		return;
 	}
 
-	app.listen(host, port, () => console.log(`App listening on port ${port}!`))
+	app.listen(port, host, () => console.log(`App listening on port ${port}!`))
 
 });
