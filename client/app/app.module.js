@@ -1,7 +1,7 @@
 // Declare app level module which depends on views, and core components
 window.config = {
 	login_service: {
-		host: 'http://login',
+		host: 'http://localhost',
 		port: '8080'
 	},
 	user_data_service: {

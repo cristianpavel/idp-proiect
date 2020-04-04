@@ -10,6 +10,8 @@ services:
                         - db:/data/db
         login:
                 image: cristianpavel/idp:login
+                ports:
+                        - '8080:8080'
         client:
                 image: cristianpavel/idp:client
                 ports:
