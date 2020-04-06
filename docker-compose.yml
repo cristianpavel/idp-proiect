@@ -7,6 +7,7 @@ services:
                         MONGO_INITDB_USERNAME: 'admin'
                         MONGO_INITDB_PASSWORD: 'admin123'
                 volumes:
+                        - ./db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
                         - db:/data/db
         login:
                 image: cristianpavel/idp:login
