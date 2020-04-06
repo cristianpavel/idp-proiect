@@ -9,7 +9,7 @@ services:
                 volumes:
                         - db:/data/db
         login:
-                build : ./services/login
+                build : cristianpavel/idp:login
                 ports:
                         - '8080:8080'
         client:
