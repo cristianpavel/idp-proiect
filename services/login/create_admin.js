@@ -25,8 +25,6 @@ connection.init(function (err) {
 
 	collection.insertOne(user, function (err, res) {
 		if (err) {
-			console.log(err);
-			console.log({error: "The user could not be created. Please try again"});
 			return;
 		}
 
