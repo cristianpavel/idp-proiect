@@ -14,7 +14,7 @@ window.config = {
 	},
 	account_service: {
 		host: 'http://localhost',
-		port: '3000'
+		port: '8090'
 	}
 }
 

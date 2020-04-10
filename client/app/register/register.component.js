@@ -8,7 +8,7 @@ angular.
 			function RegisterController($http, $timeout, $window) {
 
 				var self = this;
-				var server = $window.config;
+				var server = $window.config.account_servic
 				var badUsername = function badUsername() {
 					return !self.username;
 				}
@@ -20,7 +20,7 @@ angular.
 
 				self.msg = "";
 				var sendDataToServer = function sendDataToServer(path, data) {
-					return $http.post(serve.host + ":" 
+					return $http.post(server.host + ":" 
 						+ server.port + path, data)
 						.catch(function(err) {
 							console.log(err);

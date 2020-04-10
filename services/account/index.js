@@ -4,7 +4,6 @@ const app = express();
 const port = 8080;
 const host = '0.0.0.0';
 const cors = require('cors')
-const admin = require('./create_admin.js')
 
 
 app.use(bodyParser.json());

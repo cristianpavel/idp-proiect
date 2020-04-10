@@ -4,8 +4,8 @@ angular.
 	module('userData').
 	component('userData', {
 		templateUrl: 'user-data/user-data.template.html',
-		controller: ['$http', '$routeParams', 
-			function UserDataController($http, $routeParams) {
+		controller: ['$http', '$routeParams', '$window', 
+			function UserDataController($http, $routeParams, $window) {
 				var self = this;
 
 				self.noSessionsTable = 10;
@@ -14,7 +14,7 @@ angular.
 				
 				self.session = [];
 				self.userId = $routeParams.userId;
-			
+				var user_data_service = $window.config.user_data_service;
 
 
 				var formPostData = function formPostData(noSessions, pageNo) {
@@ -28,7 +28,8 @@ angular.
 
 				var getSessionsFromServer = function getSessionsFromServer() {
 					
-					$http.post('http://localhost:3000/user-data/sessions', formPostData(self.noSessionsTable, self.pageNo)).then(function(response) {
+					$http.post(user_data_service.host + ":" + 
+						user_data_service.port + "/user-data/sessions', formPostData(self.noSessionsTable, self.pageNo)).then(function(response) {
 						self.sessions = getSessionsFromResponse(response);
 					
 					});

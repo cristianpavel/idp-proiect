@@ -3,6 +3,8 @@ var uuid = require('uuid/v4')
 var async = require('async')
 var moment = require('moment-business-days')
 var md5 = require('md5')
+var jwt = require('jsonwebtoken')
+var config = require('../config.json')
 
 var getHitsFromResponse = function getHitsFromResponse(response) {
 	return response;

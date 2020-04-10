@@ -13,9 +13,11 @@ angular.
 
 				self.msg = "";
 				
-				
+				var server = $window.config.account_service;
+
 				var sendDataToServer = function sendDataToServer(path, data) {
-					return $http.post('http://localhost:3000/account' + path, data, {headers: 
+					return $http.post(server.host + ":"
+                                                + server.port + path, data, {headers: 
 						{'x-access-token' : self.token}})
 						.catch(function(err) {
 							console.log(err);
@@ -52,7 +54,7 @@ angular.
 
 		
 					console.log(postData);
-					sendDataToServer("/modifySession", postData)
+					sendDataToServer("/account/modifySession", postData)
 						.then(function(response) {
 						if (response.data &&
 							response.data.error) {
@@ -83,7 +85,7 @@ angular.
 
 		
 					console.log(postData);
-					sendDataToServer("/modifySession", postData)
+					sendDataToServer("/account/modifySession", postData)
 						.then(function(response) {
 						if (response.data &&
 							response.data.error) {
@@ -112,7 +114,7 @@ angular.
 					self.minDate = new Date(today);
 					self.minDate = self.minDate.toISOString().substring(0, 10);
 					console.log(self.minDate);
-					sendDataToServer('/', {}) 
+					sendDataToServer('/account/', {}) 
 						.then(function(response) {
 							self.username = response.data.user.username;
 							self.team = response.data.user.team;
@@ -144,7 +146,7 @@ angular.
 								}
 							});
 
-							return sendDataToServer('/getUsers', {});
+							return sendDataToServer('/account/getUsers', {});
 							
 						}).then((response) => {
 							if (response.data &&
@@ -165,7 +167,7 @@ angular.
 									text: i
 								});
 							}
-							return sendDataToServer('/getDept', {});
+							return sendDataToServer('/account/getDept', {});
 						}).then((response) => {
 							if (response.data &&
 								response.data.error) {
@@ -211,7 +213,7 @@ angular.
 					end = new Date(self.to);
 					end.setDate(end.getDate() + 1);
 
-					sendDataToServer('/addHoliday', {
+					sendDataToServer('/account/addHoliday', {
 						start: start.toISOString().substring(0, 10),
 						end: end.toISOString().substring(0, 10)
 					}).then((response) => {
@@ -246,7 +248,7 @@ angular.
 						return;
 					}
 
-					sendDataToServer('/addTeam', {
+					sendDataToServer('/account/addTeam', {
 						manager: self.newTeamManager.text,
 						name: self.newTeam,
 						dept: self.newTeamDept.text
@@ -273,7 +275,7 @@ angular.
 						clear('error');
 						return;
 					}
-					sendDataToServer('/addDepartment', {
+					sendDataToServer('/account/addDepartment', {
 						manager: self.newDeptManager.text,
 						name: self.newDept,
 						maxHolidaysAllowed: self.newDeptDays.text
