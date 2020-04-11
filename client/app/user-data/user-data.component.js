@@ -15,7 +15,9 @@ angular.
 				self.session = [];
 				self.userId = $routeParams.userId;
 				var user_data_service = $window.config.user_data_service;
-
+				var user_data_path = user_data_service.host + 
+							":" + 
+							user_data_service.port;
 
 				var formPostData = function formPostData(noSessions, pageNo) {
 					return {
@@ -28,8 +30,7 @@ angular.
 
 				var getSessionsFromServer = function getSessionsFromServer() {
 					
-					$http.post(user_data_service.host + ":" + 
-						user_data_service.port + "/user-data/sessions', formPostData(self.noSessionsTable, self.pageNo)).then(function(response) {
+					$http.post(user_data_path + '/user-data/sessions', formPostData(self.noSessionsTable, self.pageNo)).then(function(response) {
 						self.sessions = getSessionsFromResponse(response);
 					
 					});
@@ -62,7 +63,7 @@ angular.
 						return;
 					}
 
-					$http.post('http://localhost:3000/user-data/sessions', formPostData(self.noSessionsGraph, 1)).then(function(response) {
+					$http.post(user_data_path + '/user-data/sessions', formPostData(self.noSessionsGraph, 1)).then(function(response) {
 						
 						var sessions = getSessionsFromResponse(response);
 
@@ -89,7 +90,7 @@ angular.
 					if (to < from)
 						return;
 					to.setDate(to.getDate() + 1);
-					$http.post('http://localhost:3000/user-data/date-histogram', 
+					$http.post(user_data_path + '/user-data/date-histogram', 
 						{
 							username: self.userId,
 							to: to.getTime(),
@@ -267,7 +268,7 @@ angular.
 
 				}
 				
-				$http.post('http://localhost:3000/user-data/average', formPostData(0, 0)).then(function(response) {
+				$http.post(user_data_path + '/user-data/average', formPostData(0, 0)).then(function(response) {
 
 					console.log(response.data);
 					self.average = response.data.avg;

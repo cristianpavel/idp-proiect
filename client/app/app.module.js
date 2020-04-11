@@ -5,12 +5,12 @@ window.config = {
 		port: '8080'
 	},
 	user_data_service: {
-		host: 'localhost',
-		port: '3000'
+		host: 'http://localhost',
+		port: '9000'
 	},
 	all_users_service: {
 		host: 'http://localhost',
-		port: '3000'
+		port: '9000'
 	},
 	account_service: {
 		host: 'http://localhost',

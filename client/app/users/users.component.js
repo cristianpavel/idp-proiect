@@ -4,18 +4,22 @@ angular.
 	module('users').
 	component('users', {
 		templateUrl: 'users/users.template.html',
-		controller: ['$http', '$routeParams',
-			function UsersController($http, $routeParams) {
+		controller: ['$http', '$routeParams', '$window',
+			function UsersController($http, $routeParams, $window) {
 
 				var self = this;
 				
 				var noUsersPerPage = 10;
 				var searchInput = '';
 				var postPath = '/users';
+				var users_service = $window.config.all_users_service;
+				var users_path = users_service.host + ":" +
+							users_service.port;
+
 				var getFromServer = function getFromServer(postPath, postData) {
 					console.log(postPath);
 					console.log(postData);
-					$http.post('http://localhost:3000' + postPath, postData).then(function(response) {
+					$http.post(users_path + postPath, postData).then(function(response) {
 						console.log(response.data);
 						if (response.data.error) {
 							self.users = undefined;
@@ -115,7 +119,7 @@ angular.
 
 				self.getProductiveUsers = function () {
 					self.usersProductive = undefined;
-					$http.post('http://localhost:3000/users/productive', {
+					$http.post(users_path + '/users/productive', {
 						noUsers: self.noUsersProductive
 					}).then(function(response) {
 						console.log('Got Most Productive');

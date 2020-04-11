@@ -17,6 +17,10 @@ services:
                 image: cristianpavel/idp:account
                 ports:
                         - '8090:8080'
+        user-data:
+                image: cristianpavel/idp:user-data
+                ports:
+                        - '9000:8080'
         client:
                 image: cristianpavel/idp:client
                 ports:
