@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["./wait-for-it.sh", "db:27017", "--", "node", "index.js"]
+CMD ["node", "index.js"]

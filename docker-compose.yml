@@ -1,5 +1,48 @@
 version: '3.3'
 services:
+        prometheus:
+                image: prom/prometheus
+                volumes:
+                        - ./prometheus/:/etc/prometheus/
+                        - prometheus:/prometheus
+                ports:
+                        - '9090:9090'
+                networks:
+                        - backend
+                        - frontend
+                deploy:
+                        restart_policy:
+                                condition: on-failure
+        node-exporter:
+                image: prom/node-exporter
+                volumes:
+                        - /proc:/host/proc:ro
+                        - /sys:/host/sys:ro
+                        - /:/rootfs:ro
+                command:
+                        - '--path.procfs=/host/proc'
+                        - '--path.sysfs=/host/sys'
+                        - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+                networks:
+                        - backend
+                deploy:
+                        restart_policy:
+                                condition: on-failure
+
+        grafana:
+                image: grafana/grafana
+                ports:
+                        - '3000:3000'
+                networks:
+                        - backend
+                        - frontend
+                volumes:
+                        - grafana:/var/lib/grafana
+                depends_on:
+                        - prometheus
+                deploy:
+                        restart_policy:
+                                condition: on-failure
         db:
                 image: mongo
                 environment:
@@ -9,21 +52,62 @@ services:
                 volumes:
                         - ./db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
                         - db:/data/db
+                networks:
+                        - backend
         login:
                 image: cristianpavel/idp:login
                 ports:
                         - '8080:8080'
+                networks:
+                        - frontend
+                        - backend
+                depends_on:
+                        - db
+                deploy:
+                        restart_policy:
+                                condition: on-failure
         account:
                 image: cristianpavel/idp:account
                 ports:
                         - '8090:8080'
+                networks:
+                        - frontend
+                        - backend
+                depends_on:
+                        - db
+                deploy:
+                        restart_policy:
+                                condition: on-failure
         user-data:
                 image: cristianpavel/idp:user-data
                 ports:
                         - '9000:8080'
+                depends_on:
+                        - db
+                networks:
+                        - frontend
+                        - backend
+                deploy:
+                        restart_policy:
+                                condition: on-failure
         client:
                 image: cristianpavel/idp:client
                 ports:
                         - '8000:8000'
+                depends_on:
+                        - user_data
+                        - account
+                        - login
+                networks:
+                        - frontend
+                deploy:
+                        restart_policy:
+                                condition: on-failure
+
+networks:
+        frontend:
+        backend:
 volumes:
-  db:
+        db:
+        prometheus:
+        grafana:

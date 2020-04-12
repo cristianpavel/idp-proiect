@@ -1,0 +1,48 @@
+global:
+  scrape_interval:     15s # By default, scrape targets every 15 seconds.
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+         - targets: ['localhost:9090']
+
+  - job_name: 'node resources'
+    dns_sd_configs:
+        - names: ['tasks.node-exporter']
+          type: 'A'
+          port: 9100
+    params:
+        collect[]:
+                - cpu
+                - meminfo
+                - diskstats
+                - netdev
+                - netstat
+  - job_name: 'node storage'
+    dns_sd_configs:
+        - names: ['tasks.node-exporter']
+          type: 'A'
+          port: 9100
+    params:
+        collect[]:
+                - filefd
+                - filesystem
+                - xfs
+  - job_name: 'login'
+    dns_sd_configs:
+        - names: ['tasks.login']
+          type: 'A'
+          port: 8080
+
+  - job_name: 'user-data'
+    dns_sd_configs:
+        - names: ['tasks.login']
+          type: 'A'
+          port: 9000
+
+  - job_name: 'account'
+    dns_sd_configs:
+        - names: ['tasks.login']
+          type: 'A'
+          port: 8090
+
