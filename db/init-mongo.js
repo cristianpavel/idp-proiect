@@ -1,12 +1,6 @@
+db.auth('admin', 'admin123');
 
-db.createUser({
-	user: "admin",
-	pwd: "admin123",
-	roles: [{
-		role: "readWrite",
-		db: "db"
-	}]
-})
+db = db.getSiblingDB('db');
 
 db.createCollection('sessions', {
 	validator: {
@@ -29,8 +23,8 @@ db.createCollection('sessions', {
 			}
 		}
 	}
-})
-db('db').createCollection('users', {
+});
+db.createCollection('users', {
 				
 	validator: {
 		$expr: {
@@ -75,9 +69,9 @@ db('db').createCollection('users', {
 		}
 	}
 
-})	
+});
 
-db('db').createCollection('depts', {
+db.createCollection('depts', {
 	validator: {
 		$expr: {
 			$gte: ["$max_holidays_allowed", 0]	
@@ -101,8 +95,9 @@ db('db').createCollection('depts', {
 			}
 		}
 	}
-})
-db('db').createCollection('teams', {
+});
+
+db.createCollection('teams', {
 	validator: {
 		$jsonSchema: {
 			bsonType: "object",
@@ -123,8 +118,9 @@ db('db').createCollection('teams', {
 			}
 		}
 	}
-})
-db('db').createCollection('holidays', {
+});
+
+db.createCollection('holidays', {
 	validator: {
 		$expr: {
 			$gte: ["$end", "$start"]
@@ -146,4 +142,4 @@ db('db').createCollection('holidays', {
 			}
 		}
 	}
-})
+});

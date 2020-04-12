@@ -3,9 +3,9 @@ services:
         db:
                 image: mongo
                 environment:
-                        MONGO_INITDB_DATABASE: 'db'
                         MONGO_INITDB_USERNAME: 'admin'
                         MONGO_INITDB_PASSWORD: 'admin123'
+                        MONGO_INITDB_DATABASE: 'db'
                 volumes:
                         - ./db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
                         - db:/data/db

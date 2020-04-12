@@ -8,7 +8,7 @@ angular.
 			function RegisterController($http, $timeout, $window) {
 
 				var self = this;
-				var server = $window.config.account_servic
+				var server = $window.config.account_service;
 				var badUsername = function badUsername() {
 					return !self.username;
 				}
