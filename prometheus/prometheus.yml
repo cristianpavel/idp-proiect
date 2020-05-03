@@ -28,21 +28,13 @@ scrape_configs:
                 - filefd
                 - filesystem
                 - xfs
-  - job_name: 'login'
+ 
+  - job_name: 'cadvisor'
     dns_sd_configs:
-        - names: ['tasks.login']
+        - names: ['tasks.cadvisor']
           type: 'A'
           port: 8080
-
-  - job_name: 'user-data'
-    dns_sd_configs:
-        - names: ['tasks.user-data']
-          type: 'A'
-          port: 9000
-
-  - job_name: 'account'
-    dns_sd_configs:
-        - names: ['tasks.account']
-          type: 'A'
-          port: 8090
-
+ 
+  - job_name: 'login'
+    static_configs:
+            - targets: ['login:8080']

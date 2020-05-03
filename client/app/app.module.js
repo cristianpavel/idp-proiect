@@ -1,19 +1,19 @@
 // Declare app level module which depends on views, and core components
 window.config = {
 	login_service: {
-		host: 'http://localhost',
+		host: 'http://3.9.146.230',
 		port: '8080'
 	},
 	user_data_service: {
-		host: 'http://localhost',
+		host: 'http://3.9.146.230',
 		port: '9000'
 	},
 	all_users_service: {
-		host: 'http://localhost',
+		host: 'http://3.9.146.230',
 		port: '9000'
 	},
 	account_service: {
-		host: 'http://localhost',
+		host: 'http://3.9.146.230',
 		port: '8090'
 	}
 }

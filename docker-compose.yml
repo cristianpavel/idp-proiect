@@ -7,6 +7,8 @@ services:
                         - prometheus:/prometheus
                 ports:
                         - '9090:9090'
+                depends_on:
+                        - cadvisor
                 networks:
                         - backend
                         - frontend
@@ -26,6 +28,20 @@ services:
                 networks:
                         - backend
                 deploy:
+                        mode: global
+                        restart_policy:
+                                condition: on-failure
+        cadvisor:
+                image: google/cadvisor
+                volumes:
+                        - /:/rootfs:ro
+                        - /var/run:/var/run:rw
+                        - /sys:/sys:ro
+                        - /var/lib/docker/:/var/lib/docker:ro
+                networks:
+                        - backend
+                deploy:
+                        mode: global
                         restart_policy:
                                 condition: on-failure
 
@@ -95,7 +111,7 @@ services:
                 ports:
                         - '8000:8000'
                 depends_on:
-                        - user_data
+                        - user-data
                         - account
                         - login
                 networks:
